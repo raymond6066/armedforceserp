@@ -1,12 +1,11 @@
-// src/lib/amplifyClient.ts
+// src/lib/amplifyConfig.ts
 import { Amplify } from 'aws-amplify';
-// The type that Amplify.configure() now expects:
+// This is the interface for v6 resources:
 import type { ResourcesConfig } from '@aws-amplify/core';
-// Your Gen 2/v6 JSON outputs:
 import outputs from '../amplify_outputs.json';
 
-// Cast the raw JSON into the exact config shape:
+// Cast your Gen 2 outputs JSON into ResourcesConfig:
 const config = (outputs as unknown) as ResourcesConfig;
 
-// One and only one configure call—SSR flag is optional in Next.js:
+// One‑and‑only call to configure Amplify (ssr: true if you use Next.js):
 Amplify.configure(config, { ssr: true });
