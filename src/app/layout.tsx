@@ -1,7 +1,6 @@
-// src/app/layout.tsx
-import '@/lib/amplifyClient'; // ✅ must be before any Amplify usage
+import Providers from './providers'; // ← must be before any page content
 import type { Metadata } from 'next';
-import { geistSans, geistMono } from '@/lib/fonts'; // ✅ moved here
+import { geistSans, geistMono } from '@/lib/fonts';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -16,10 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   );
