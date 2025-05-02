@@ -1,7 +1,7 @@
 // src/lib/amplifyConfig.ts
 import { Amplify } from 'aws-amplify';
 import type { ResourcesConfig } from '@aws-amplify/core';
-import outputs from '../amplify_outputs.json';
+import outputs from '../../amplify_outputs.json';
 
 // Cast your Gen 2 JSON into the ResourcesConfig interface
 const config = (outputs as unknown) as ResourcesConfig;

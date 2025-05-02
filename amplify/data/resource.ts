@@ -5,7 +5,12 @@ const schema = a.schema({
   UserProfile: a.model({
     fullName: a.string(),
     rank: a.string(),
+    course:   a.string(),
     email: a.email(),
+    phone:       a.string(),
+    nextKin:     a.string(),
+    passportUrl: a.string(),
+    medicalUrl:  a.string(),
     role: a.enum(['STUDENT', 'INSTRUCTOR', 'ADMIN']),
   }).authorization((allow) => [
     allow.owner(), // users manage their own profile

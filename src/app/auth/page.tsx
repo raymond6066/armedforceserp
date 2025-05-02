@@ -1,5 +1,7 @@
+// src/app/auth/page.tsx
 'use client';
 
+import '@/lib/amplifyConfig';          // ensure Amplify is bootstrapped in the browser
 import { Authenticator } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
 import type { AuthUser } from 'aws-amplify/auth';
@@ -10,9 +12,10 @@ export default function AuthPage() {
   const router = useRouter();
   const [signedInUser, setSignedInUser] = useState<AuthUser | null>(null);
 
+  // once signed in, send them to the extended registration page
   useEffect(() => {
     if (signedInUser) {
-      router.push('/dashboard');
+      router.push('/register');
     }
   }, [signedInUser, router]);
 
@@ -49,7 +52,7 @@ export default function AuthPage() {
 
           return (
             <p className="text-center text-gray-400">
-              {user ? 'Redirecting...' : 'Loading...'}
+              {user ? 'Redirecting to registration…' : 'Loading…'}
             </p>
           );
         }}
